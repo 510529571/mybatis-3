@@ -29,6 +29,25 @@ import org.apache.ibatis.executor.BatchResult;
 import org.apache.ibatis.reflection.ExceptionUtil;
 
 /**
+ * hhw:comments SqlSessionManager是SqlSession的代理类
+ *
+ * 目的：主要是用来支持事务管理
+ * 1.如果用户调用了startManagedSession方法，SqlSession由用户管理，
+ *   调用了startManagedSession是开启一个连接和事务，调用commit方法是提交事务
+ * 2.如果用户没有调用startManagedSession方法，SqlSession用此类管理，
+ *   每次进行了ciud操作都会提交事务，关闭连接
+ *****************
+ * 扩展1： SqlSessionManager还继承了SqlSessionFactory，拥有SqlSessionFactory的成员变量
+ *
+ * 目的：直接通过管理SqlSessionManager的对象来管理SqlSessionFactory，其实可以把
+ * SqlSessionFactory提取出来管理，但是没必要，反而增加了使用难道
+ ********************
+ * 扩展2：
+ * 直接通过SqlSessionFactory获取SqlSession时，SqlSession的事务提交，连接关闭都需要
+ * 用户去操作
+ *
+ * 注：此类用到了代理模式
+ *
  * @author Larry Meadors
  */
 public class SqlSessionManager implements SqlSessionFactory, SqlSession {

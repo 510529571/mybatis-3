@@ -36,6 +36,13 @@ import java.util.concurrent.locks.ReadWriteLock;
  * }
  * </pre>
  *
+ * hhw:comments mybatis的缓存处理接口
+ *
+ * 感觉缓存很鸡肋
+ * 原因：select操作查出的数据会被缓存，执行任何表的insert，update，delete后，所有的缓存都会失效
+ *
+ * 注：用到了类装饰模式
+ *
  * @author Clinton Begin
  */
 

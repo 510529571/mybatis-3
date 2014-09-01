@@ -36,6 +36,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 /**
+ * hhw:comments SqlSession的实现类
+ *
  * @author Clinton Begin
  */
 public class DefaultSqlSession implements SqlSession {

@@ -32,6 +32,9 @@ import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.managed.ManagedTransactionFactory;
 
 /**
+ * hhw:comments SqlSessionFactory的实现类，用来生成SqlSession对象，开启连接
+ *
+ *
  * @author Clinton Begin
  */
 public class DefaultSqlSessionFactory implements SqlSessionFactory {
