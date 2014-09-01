@@ -34,14 +34,10 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
-
-/**
- * hhw:comments SqlSession的实现类
- *
+/** hhw:comments SqlSession的实现类
  * @author Clinton Begin
  */
 public class DefaultSqlSession implements SqlSession {
-
   private Configuration configuration;
   private Executor executor;
 
