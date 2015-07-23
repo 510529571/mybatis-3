@@ -93,6 +93,10 @@ public class XMLConfigBuilder extends BaseBuilder {
     return configuration;
   }
 
+    /**
+     * hhw:tag 解析 mabtis-config.xml
+     * @param root
+     */
   private void parseConfiguration(XNode root) {
     try {
       propertiesElement(root.evalNode("properties")); //issue #117 read properties first
@@ -305,6 +309,9 @@ public class XMLConfigBuilder extends BaseBuilder {
     }
   }
 
+    /**
+     * hhw:tag 装载mapper节点
+     */
   private void mapperElement(XNode parent) throws Exception {
     if (parent != null) {
       for (XNode child : parent.getChildren()) {

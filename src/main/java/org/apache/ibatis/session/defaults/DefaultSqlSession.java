@@ -34,7 +34,7 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
-/** hhw:comments SqlSession的实现类
+/** hhw:tag SqlSession的实现类
  * @author Clinton Begin
  */
 public class DefaultSqlSession implements SqlSession {
@@ -59,6 +59,9 @@ public class DefaultSqlSession implements SqlSession {
     return this.<T>selectOne(statement, null);
   }
 
+    /**
+     * hhw:tag [select:step_3] 进行查询处理
+     */
   public <T> T selectOne(String statement, Object parameter) {
     // Popular vote was to return null on 0 results and throw exception on too many.
     List<T> list = this.<T>selectList(statement, parameter);

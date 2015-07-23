@@ -32,7 +32,7 @@ import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.managed.ManagedTransactionFactory;
 
 /**
- * hhw:comments SqlSessionFactory的实现类，用来生成SqlSession对象，开启连接
+ * hhw:tag SqlSessionFactory的实现类，用来生成SqlSession对象，开启连接
  *
  *
  * @author Clinton Begin
@@ -81,6 +81,9 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
     return configuration;
   }
 
+    /**
+     * hhw:tag创建sqlsession对象
+     */
   private SqlSession openSessionFromDataSource(ExecutorType execType, TransactionIsolationLevel level, boolean autoCommit) {
     Transaction tx = null;
     try {
@@ -97,6 +100,9 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
     }
   }
 
+    /**
+     * hhw:tag创建sqlsession对象
+     */
   private SqlSession openSessionFromConnection(ExecutorType execType, Connection connection) {
     try {
       boolean autoCommit;

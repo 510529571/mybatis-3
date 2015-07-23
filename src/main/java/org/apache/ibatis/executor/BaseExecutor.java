@@ -120,7 +120,9 @@ public abstract class BaseExecutor implements Executor {
     return query(ms, parameter, rowBounds, resultHandler, key, boundSql);
  }
 
-  @SuppressWarnings("unchecked")
+    /**
+     * hhw:tag [select:step_5] 从本地1级缓存读取数据，没有则从数据库读取数据
+     */
   public <E> List<E> query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql) throws SQLException {
     ErrorContext.instance().resource(ms.getResource()).activity("executing a query").object(ms.getId());
     if (closed) throw new ExecutorException("Executor was closed.");
@@ -130,7 +132,7 @@ public abstract class BaseExecutor implements Executor {
     List<E> list;
     try {
       queryStack++;
-      list = resultHandler == null ? (List<E>) localCache.getObject(key) : null;
+      list = resultHandler == null ? (List<E>) localCache.getObject(key) : null;//hhw:tag 从本地1级缓存读取数据
       if (list != null) {
         handleLocallyCachedOutputParameters(ms, key, parameter, boundSql);
       } else {
@@ -261,6 +263,9 @@ public abstract class BaseExecutor implements Executor {
     }
   }
 
+    /**
+     * hhw:tag [select:step_6] 从数据库读取数据
+     */
   private <E> List<E> queryFromDatabase(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql) throws SQLException {
     List<E> list;
     localCache.putObject(key, EXECUTION_PLACEHOLDER);
@@ -276,6 +281,9 @@ public abstract class BaseExecutor implements Executor {
     return list;
   }
 
+    /**
+     * hhw:tag [select:step_7_1] 开启一个connection
+     */
   protected Connection getConnection(Log statementLog) throws SQLException {
     Connection connection = transaction.getConnection();
     if (statementLog.isDebugEnabled()) {

@@ -44,6 +44,9 @@ public class MapperMethod {
     this.method = new MethodSignature(config, method);
   }
 
+    /**
+     * hhw:tag [select:step_2] 所有调用*Mapper接口的方法都会通过这个方法进行分发
+     */
   public Object execute(SqlSession sqlSession, Object[] args) {
     Object result;
     if (SqlCommandType.INSERT == command.getType()) {

@@ -25,9 +25,17 @@ import org.apache.ibatis.session.SqlSession;
 /**
  * @author Lasse Voss
  */
+
+/**
+ * hhw:tag 每个mapper类型都会有一个MapperProxyFactory对象,存储结构为Map<mapper的类型,MapperProxyFactory对象>
+ * 使用地点可用看这里{@link MapperRegistry#getMapper(Class,SqlSession):45}
+ *
+ * 此类用来实例化每个mapper类的代理对象
+ */
 public class MapperProxyFactory<T> {
 
   private final Class<T> mapperInterface;
+  //hhw:tag methodCache 缓存每次调用过的方法
   private Map<Method, MapperMethod> methodCache = new ConcurrentHashMap<Method, MapperMethod>();
 
   public MapperProxyFactory(Class<T> mapperInterface) {

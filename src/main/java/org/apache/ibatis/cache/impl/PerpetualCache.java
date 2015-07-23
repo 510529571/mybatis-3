@@ -24,6 +24,8 @@ import org.apache.ibatis.cache.CacheException;
 
 /**
  * @author Clinton Begin
+ * hhw:tag [一级缓存][二级缓存]缓存策略最终存储实现
+ * 一级缓存，二级缓存，最终都可以使用这个进行缓存存储，如果想使用memcached之类的外部缓存方式，其实只需要替换这个类
  */
 public class PerpetualCache implements Cache {
 

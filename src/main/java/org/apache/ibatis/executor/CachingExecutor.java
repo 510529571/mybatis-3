@@ -32,6 +32,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.transaction.Transaction;
 
 /**
+ * hhw:tag [二级缓存]级缓存执行器
  * @author Clinton Begin
  * @author Eduardo Macarron
  */
@@ -66,17 +67,31 @@ public class CachingExecutor implements Executor {
     return delegate.isClosed();
   }
 
+    /**
+     * hhw:tag update逻辑
+     * insert,update,delete 最终都是调用这个方法
+     *
+     * 这里会先清除与ms对应的缓存
+     */
   public int update(MappedStatement ms, Object parameterObject) throws SQLException {
     flushCacheIfRequired(ms);
     return delegate.update(ms, parameterObject);
   }
 
+    /**
+     * hhw:tag [select:step_4] 缓存处理器，先从二级缓存读取数据，如果没有则交给下一级的处理器处理
+     */
   public <E> List<E> query(MappedStatement ms, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
     BoundSql boundSql = ms.getBoundSql(parameterObject);
     CacheKey key = createCacheKey(ms, parameterObject, rowBounds, boundSql);
     return query(ms, parameterObject, rowBounds, resultHandler, key, boundSql);
   }
 
+    /**
+     *  hhw:tag selectList查询逻辑
+     *  1.如果允许缓存数据，1.1先从缓存中读取待查询的数据，1.2如果没有读取到，则从数据库中读取
+     *  2.如果不允许缓存，2.1则直接从数据库读取
+     */
   public <E> List<E> query(MappedStatement ms, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql)
       throws SQLException {
     Cache cache = ms.getCache();
@@ -144,6 +159,9 @@ public class CachingExecutor implements Executor {
     delegate.clearLocalCache();
   }
 
+    /**
+     * hhw:tag 清空ms对应的cache的缓存
+     */
   private void flushCacheIfRequired(MappedStatement ms) {
     Cache cache = ms.getCache();
     if (cache != null && ms.isFlushCacheRequired()) {      

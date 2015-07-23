@@ -474,6 +474,9 @@ public class Configuration {
     return newExecutor(transaction, defaultExecutorType);
   }
 
+    /**
+     * hhw:tag 获取executor，如果缓存开启了，那就使用CachingExecutor进行装饰
+     */
   public Executor newExecutor(Transaction transaction, ExecutorType executorType) {
     executorType = executorType == null ? defaultExecutorType : executorType;
     executorType = executorType == null ? ExecutorType.SIMPLE : executorType;

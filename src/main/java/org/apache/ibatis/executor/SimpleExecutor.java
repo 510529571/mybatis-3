@@ -67,6 +67,13 @@ public class SimpleExecutor extends BaseExecutor {
     return Collections.emptyList();
   }
 
+    /**
+     * hhw:tag [select:step_7] 准备一个statement对象
+     * @param handler
+     * @param statementLog
+     * @return
+     * @throws SQLException
+     */
   private Statement prepareStatement(StatementHandler handler, Log statementLog) throws SQLException {
     Statement stmt;
     Connection connection = getConnection(statementLog);

@@ -40,6 +40,9 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     this.methodCache = methodCache;
   }
 
+    /**
+     * hhw:tag [select:step_1] 所有调用*Mapper接口的方法，都会经过这个代理
+     */
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     if (Object.class.equals(method.getDeclaringClass())) {
       try {
@@ -51,7 +54,9 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     final MapperMethod mapperMethod = cachedMapperMethod(method);
     return mapperMethod.execute(sqlSession, args);
   }
-
+    //hhw:tag 将调用过的方法进行缓存，k-方法对象，v-包装后的方法对象
+    //MapperMethod与sqlSession耦合了，这里的设计是否有问题呢？
+    // 可能出错场景：当系统中存在多数据源时，不同的Method对象应该对应不同的MapperMethod，而现在可能得到同一个MapperMethod对象
   private MapperMethod cachedMapperMethod(Method method) {
     MapperMethod mapperMethod = methodCache.get(method);
     if (mapperMethod == null) {

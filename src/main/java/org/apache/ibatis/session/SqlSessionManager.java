@@ -29,10 +29,10 @@ import org.apache.ibatis.executor.BatchResult;
 import org.apache.ibatis.reflection.ExceptionUtil;
 
 /**
- * hhw:comments SqlSessionManager是SqlSession的代理类
+ * hhw:tag SqlSessionManager是SqlSession的代理类
  *
  * 目的：主要是用来支持事务管理
- * 1.如果用户调用了startManagedSession方法，SqlSession由用户管理，
+ * 1.如果用户调用了{@link #startManagedSession}方法，SqlSession由用户管理，
  *   调用了startManagedSession是开启一个连接和事务，调用commit方法是提交事务
  * 2.如果用户没有调用startManagedSession方法，SqlSession用此类管理，
  *   每次进行了ciud操作都会提交事务，关闭连接

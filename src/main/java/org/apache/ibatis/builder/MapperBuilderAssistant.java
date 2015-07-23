@@ -113,6 +113,16 @@ public class MapperBuilderAssistant extends BaseBuilder {
     }
   }
 
+    /**
+     * hhw:tag cache对象初始化，然后绑定到容器
+     * @param typeClass
+     * @param evictionClass
+     * @param flushInterval
+     * @param size
+     * @param readWrite
+     * @param props
+     * @return
+     */
   public Cache useNewCache(Class<? extends Cache> typeClass,
       Class<? extends Cache> evictionClass,
       Long flushInterval,

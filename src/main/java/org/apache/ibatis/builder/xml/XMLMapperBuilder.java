@@ -103,6 +103,9 @@ public class XMLMapperBuilder extends BaseBuilder {
     return sqlFragments.get(refid);
   }
 
+    /**
+     * hhw:tag 解析 *mapper.xml 文件
+     */
   private void configurationElement(XNode context) {
     try {
       String namespace = context.getStringAttribute("namespace");
@@ -387,6 +390,9 @@ public class XMLMapperBuilder extends BaseBuilder {
     return null;
   }
 
+    /**
+     * hhw:tag 装载mapper对象
+     */
   private void bindMapperForNamespace() {
     String namespace = builderAssistant.getCurrentNamespace();
     if (namespace != null) {
