@@ -52,11 +52,15 @@ public class RoutingStatementHandler implements StatementHandler {
     }
 
   }
-
+    /**
+     * hhw:tag [select:step_7B_2_1]
+     */
   public Statement prepare(Connection connection) throws SQLException {
     return delegate.prepare(connection);
   }
-
+    /**
+     * hhw:tag [select:step_7B_3_1]
+     */
   public void parameterize(Statement statement) throws SQLException {
     delegate.parameterize(statement);
   }
@@ -68,7 +72,9 @@ public class RoutingStatementHandler implements StatementHandler {
   public int update(Statement statement) throws SQLException {
     return delegate.update(statement);
   }
-
+    /**
+     * hhw:tag [select:step_8]
+     */
   public <E> List<E> query(Statement statement, ResultHandler resultHandler) throws SQLException {
     return delegate.<E>query(statement, resultHandler);
   }

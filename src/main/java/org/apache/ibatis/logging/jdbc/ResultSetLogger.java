@@ -30,7 +30,7 @@ import org.apache.ibatis.reflection.ExceptionUtil;
 
 /**
  * ResultSet proxy to add logging
- * 
+ * hhw:tag mybatis执行sql时的日志打印
  * @author Clinton Begin
  * @author Eduardo Macarron
  * 

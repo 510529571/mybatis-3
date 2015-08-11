@@ -77,7 +77,9 @@ public abstract class BaseStatementHandler implements StatementHandler {
   public ParameterHandler getParameterHandler() {
     return parameterHandler;
   }
-
+    /**
+     * hhw:tag [select:step_7B_2_2] 创建一个Statement实例
+     */
   public Statement prepare(Connection connection) throws SQLException {
     ErrorContext.instance().sql(boundSql.getSql());
     Statement statement = null;

@@ -98,7 +98,7 @@ public class MetaClass {
     Class<?> propType = getGetterType(prop);
     return MetaClass.forClass(propType);
   }
-
+//hhw:tag [initContext:] 获取sql中#{name}所设置的属性的类型信息
   private Class<?> getGetterType(PropertyTokenizer prop) {
     Class<?> type = reflector.getGetterType(prop.getName());
     if (prop.getIndex() != null && Collection.class.isAssignableFrom(type)) {

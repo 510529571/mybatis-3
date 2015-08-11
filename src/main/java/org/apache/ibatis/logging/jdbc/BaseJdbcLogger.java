@@ -28,7 +28,7 @@ import org.apache.ibatis.logging.Log;
 
 /**
  * Base class for proxies to do logging
- * 
+ * hhw:tag mybatis执行sql时的日志打印抽象父类（需要设置mybaits的LogPrefix参数，log的打印级别为debug）
  * @author Clinton Begin
  * @author Eduardo Macarron
  */

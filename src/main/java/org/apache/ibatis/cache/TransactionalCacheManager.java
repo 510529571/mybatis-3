@@ -21,6 +21,7 @@ import java.util.Map;
 import org.apache.ibatis.cache.decorators.TransactionalCache;
 
 /**
+ * hhw:tag 缓存事务管理器
  * @author Clinton Begin
  */
 public class TransactionalCacheManager {
@@ -39,6 +40,7 @@ public class TransactionalCacheManager {
     getTransactionalCache(cache).putObject(key, value);
   }
 
+  //hhw:tag 提交一个缓存事务时，会把其他所有缓存的事务也提交了，这个合理吗？
   public void commit() {
     for (TransactionalCache txCache : transactionalCaches.values()) {
       txCache.commit();

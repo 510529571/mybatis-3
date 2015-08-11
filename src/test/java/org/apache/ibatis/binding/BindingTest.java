@@ -31,6 +31,7 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import domain.blog.*;
 import net.sf.cglib.proxy.Factory;
 
 import org.apache.ibatis.BaseDataTest;
@@ -46,12 +47,6 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
-
-import domain.blog.Author;
-import domain.blog.Blog;
-import domain.blog.DraftPost;
-import domain.blog.Post;
-import domain.blog.Section;
 
 public class BindingTest {
   private static SqlSessionFactory sqlSessionFactory;
@@ -70,6 +65,8 @@ public class BindingTest {
     configuration.getTypeAliasRegistry().registerAlias(Author.class);
     configuration.addMapper(BoundBlogMapper.class);
     configuration.addMapper(BoundAuthorMapper.class);
+    configuration.setCacheEnabled(true);
+      configuration.setLogPrefix("hhw");
     sqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
   }
 
@@ -79,6 +76,8 @@ public class BindingTest {
     try {
       BoundBlogMapper mapper = session.getMapper(BoundBlogMapper.class);
       Blog b = mapper.selectBlogWithPostsUsingSubSelect(1);
+        session.commit();
+       b = mapper.selectBlogWithPostsUsingSubSelect(1);
       assertEquals(1, b.getId());
       session.commit();
       session.close();
@@ -144,6 +143,13 @@ public class BindingTest {
       BoundAuthorMapper mapper = session.getMapper(BoundAuthorMapper.class);
       Author author = new Author(-1, "cbegin", "******", "cbegin@nowhere.com", "N/A", Section.NEWS);
       int rows = mapper.insertAuthor(author);
+
+        Authorhhw authorhhw = new Authorhhw();
+        authorhhw.setAuthor(author);
+        authorhhw.setUsername("huhanwie");
+      rows=mapper.insertAuthorhhw(authorhhw);
+
+       Authorhhw authorhhw2= mapper.selectAuthorhhw(authorhhw);
       assertEquals(1, rows);
       session.rollback();
     } finally {

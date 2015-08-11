@@ -15,11 +15,12 @@
  */
 package domain.blog;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class Post {
-
+public class Post implements Serializable{
+    private static final long serialVersionUID = 1325471271075612425L;
   private int id;
   private Author author;
   private Blog blog;

@@ -47,6 +47,9 @@ public class LruCache implements Cache {
     return delegate.getSize();
   }
 
+    /**
+     * hhw:tag 下面的写法需要好好学习
+     */
   public void setSize(final int size) {
     keyMap = new LinkedHashMap<Object, Object>(size, .75F, true) {
       private static final long serialVersionUID = 4267176411845948333L;
@@ -88,6 +91,9 @@ public class LruCache implements Cache {
     return null;
   }
 
+    /**
+     * hhw:task 如何移除最久数据的
+     */
   private void cycleKeyList(Object key) {
     keyMap.put(key, key);
     if (eldestKey != null) {

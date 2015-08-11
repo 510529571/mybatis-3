@@ -41,6 +41,7 @@ public class MapperRegistry {
   }
 
   @SuppressWarnings("unchecked")
+  //hhw:tag [select:getMapper:step_3]
   public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
     final MapperProxyFactory<T> mapperProxyFactory = (MapperProxyFactory<T>) knownMappers.get(type);
     if (mapperProxyFactory == null)
@@ -55,7 +56,7 @@ public class MapperRegistry {
   public <T> boolean hasMapper(Class<T> type) {
     return knownMappers.containsKey(type);
   }
-
+   // hhw:tag [initContext:addMapper:step_2]
   public <T> void addMapper(Class<T> type) {
     if (type.isInterface()) {
       if (hasMapper(type)) {

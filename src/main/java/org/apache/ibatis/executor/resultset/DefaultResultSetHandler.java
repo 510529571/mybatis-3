@@ -138,7 +138,7 @@ public class DefaultResultSetHandler implements ResultSetHandler {
   //
 
     /**
-     * hhw:tag [select:step_8] 处理ResultsSet，获取数据集
+     * hhw:tag [select:step_10] 处理ResultsSet，获取数据集
      */
   public List<Object> handleResultSets(Statement stmt) throws SQLException {
     final List<Object> multipleResults = new ArrayList<Object>();
@@ -175,7 +175,7 @@ public class DefaultResultSetHandler implements ResultSetHandler {
     return collapseSingleResultList(multipleResults);
   }
 
-  //hhw:tag 请求数据库，获取数据集
+  //hhw:tag [select:step_11]请求数据库，获取数据集
   private ResultSetWrapper getFirstResultSet(Statement stmt) throws SQLException {
     ResultSet rs = stmt.getResultSet();
     while (rs == null) {
@@ -231,7 +231,7 @@ public class DefaultResultSetHandler implements ResultSetHandler {
     }
   }
 
-    //hhw:tag 从ResultSet对象读取数据
+    //hhw:tag [select:step_10A]从ResultSet对象读取数据
   private void handleResultSet(ResultSetWrapper rsw, ResultMap resultMap, List<Object> multipleResults, ResultMapping parentMapping) throws SQLException {
     try {
       if (parentMapping != null) {
@@ -262,7 +262,7 @@ public class DefaultResultSetHandler implements ResultSetHandler {
   //
   // HANDLE ROWS FOR SIMPLE RESULTMAP
   //
-
+//hhw:tag [select:step_10A_2]
   private void handleRowValues(ResultSetWrapper rsw, ResultMap resultMap, ResultHandler resultHandler, RowBounds rowBounds, ResultMapping parentMapping) throws SQLException {
     if (resultMap.hasNestedResultMaps()) {
       ensureNoRowBounds();
@@ -289,7 +289,7 @@ public class DefaultResultSetHandler implements ResultSetHandler {
   }
 
     /**
-     * hhw:tag [select:step_8_1] 将数据集中的数据填充到java对象中
+     * hhw:tag [select:step_10A_3] 将数据集中的数据填充到java对象中
      */
   private void handleRowValuesForSimpleResultMap(ResultSetWrapper rsw, ResultMap resultMap, ResultHandler resultHandler, RowBounds rowBounds, ResultMapping parentMapping)
       throws SQLException {
@@ -743,7 +743,7 @@ public class DefaultResultSetHandler implements ResultSetHandler {
   //
   // HANDLE NESTED RESULT MAPS
   //
-
+//hhw:tag [select:step_10A_3]
   private void handleRowValuesForNestedResultMap(ResultSetWrapper rsw, ResultMap resultMap, ResultHandler resultHandler, RowBounds rowBounds, ResultMapping parentMapping) throws SQLException {
     final DefaultResultContext resultContext = new DefaultResultContext();
     skipRows(rsw.getResultSet(), rowBounds);

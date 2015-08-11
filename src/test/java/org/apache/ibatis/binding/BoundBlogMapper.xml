@@ -22,8 +22,8 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.apache.ibatis.binding.BoundBlogMapper">
-
-    <select id="selectRandom" resultType="int">
+    <cache/>
+    <select id="selectRandom" resultType="int" >
     select CAST(RANDOM()*1000000 as INTEGER) a from SYSIBM.SYSDUMMY1
   </select>
 
@@ -76,7 +76,7 @@
         </constructor>
     </resultMap>
 
-  <select id="selectBlogWithPostsUsingSubSelect" parameterType="int" resultMap="blogWithPosts">
+  <select id="selectBlogWithPostsUsingSubSelect" parameterType="int" resultMap="blogWithPosts" >
     select * from Blog where id = #{id}
   </select>
 

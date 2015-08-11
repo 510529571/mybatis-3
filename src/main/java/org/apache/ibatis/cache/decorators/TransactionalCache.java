@@ -22,6 +22,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import org.apache.ibatis.cache.Cache;
 
 /**
+ * hhw:tag 缓存事务处理器，这个处理设计的非常有意思
  * @author Clinton Begin
  */
 public class TransactionalCache implements Cache {

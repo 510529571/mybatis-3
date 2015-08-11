@@ -53,7 +53,9 @@ public class PreparedStatementHandler extends BaseStatementHandler {
     PreparedStatement ps = (PreparedStatement) statement;
     ps.addBatch();
   }
-
+    /**
+     * hhw:tag [select:step_9] 从数据库读取数据
+     */
   public <E> List<E> query(Statement statement, ResultHandler resultHandler) throws SQLException {
     PreparedStatement ps = (PreparedStatement) statement;
     ps.execute();
@@ -75,7 +77,9 @@ public class PreparedStatementHandler extends BaseStatementHandler {
       return connection.prepareStatement(sql);
     }
   }
-
+    /**
+     * hhw:tag [select:step_7B_3_2]
+     */
   public void parameterize(Statement statement) throws SQLException {
     parameterHandler.setParameters((PreparedStatement) statement);
   }

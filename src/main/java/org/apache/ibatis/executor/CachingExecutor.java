@@ -68,7 +68,7 @@ public class CachingExecutor implements Executor {
   }
 
     /**
-     * hhw:tag update逻辑
+     * hhw:tag [update:step_4] 缓存处理器
      * insert,update,delete 最终都是调用这个方法
      *
      * 这里会先清除与ms对应的缓存
@@ -79,7 +79,7 @@ public class CachingExecutor implements Executor {
   }
 
     /**
-     * hhw:tag [select:step_4] 缓存处理器，先从二级缓存读取数据，如果没有则交给下一级的处理器处理
+     * hhw:tag [select:step_4] 缓存处理器，先从二级缓存读取数据，如果没有则交给下一个处理器处理
      */
   public <E> List<E> query(MappedStatement ms, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler) throws SQLException {
     BoundSql boundSql = ms.getBoundSql(parameterObject);
@@ -88,7 +88,8 @@ public class CachingExecutor implements Executor {
   }
 
     /**
-     *  hhw:tag selectList查询逻辑
+     *  hhw:tag [select:step_4_1]  selectList查询逻辑
+     *
      *  1.如果允许缓存数据，1.1先从缓存中读取待查询的数据，1.2如果没有读取到，则从数据库中读取
      *  2.如果不允许缓存，2.1则直接从数据库读取
      */

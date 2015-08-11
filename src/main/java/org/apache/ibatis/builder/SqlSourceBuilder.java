@@ -39,6 +39,7 @@ public class SqlSourceBuilder extends BaseBuilder {
     super(configuration);
   }
 
+    //hhw:tag [initContext:] 解析sql语句
   public SqlSource parse(String originalSql, Class<?> parameterType, Map<String, Object> additionalParameters) {
     ParameterMappingTokenHandler handler = new ParameterMappingTokenHandler(configuration, parameterType, additionalParameters);
     GenericTokenParser parser = new GenericTokenParser("#{", "}", handler);
@@ -67,6 +68,8 @@ public class SqlSourceBuilder extends BaseBuilder {
       return "?";
     }
 
+      //hhw:tag [initContext:] 构建parameterMapping,这个对象里面包含了sql中每个类似#{name}占位符的属性信息
+      //比如当sql中有#{name}占位符时，会把name的javaType，jdbcType设置进去
     private ParameterMapping buildParameterMapping(String content) {
       Map<String, String> propertiesMap = parseParameterMapping(content);
       String property = propertiesMap.get("property");

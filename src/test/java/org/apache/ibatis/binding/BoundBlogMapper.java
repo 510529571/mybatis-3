@@ -27,7 +27,7 @@ import org.apache.ibatis.session.RowBounds;
 import java.util.List;
 import java.util.Map;
 
-@CacheNamespace(readWrite = false)
+//@CacheNamespace(readWrite = false)
 public interface BoundBlogMapper {
 
   //======================================================

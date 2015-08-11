@@ -650,10 +650,11 @@ public class Configuration {
     mapperRegistry.addMappers(packageName);
   }
 
+  //hhw:tag [initContext:addMapper:step_1] 装载dao层mapper对象的相关信息
   public <T> void addMapper(Class<T> type) {
     mapperRegistry.addMapper(type);
   }
-
+    //hhw:tag [select:getMapper:step_2]
   public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
     return mapperRegistry.getMapper(type, sqlSession);
   }

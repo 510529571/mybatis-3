@@ -53,6 +53,20 @@
     )
   </insert>
 
+    <insert id="insertAuthorhhw" parameterType="domain.blog.Authorhhw">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            select CAST(RANDOM()*1000000 as INTEGER) a from SYSIBM.SYSDUMMY1
+        </selectKey>
+        insert into Author (id,username,password,email,bio,favourite_section)
+        values(
+        #{id}, #{username}, #{author.password}, #{author.email}, #{author.bio}, #{author.favouriteSection:VARCHAR}
+        )
+    </insert>
+
+    <select id="selectAuthorhhw" parameterType="domain.blog.Authorhhw" resultType="domain.blog.Authorhhw">
+        select t.* from Author t where t.username=#{username} and t.password=#{author.password}
+    </select>
+
   <insert id="insertAuthorDynamic" parameterType="domain.blog.Author">
     <selectKey keyProperty="id" resultType="int" order="BEFORE">
       select CAST(RANDOM()*1000000 as INTEGER) a from SYSIBM.SYSDUMMY1

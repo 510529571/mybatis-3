@@ -16,6 +16,7 @@
 package org.apache.ibatis.binding;
 
 import domain.blog.Author;
+import domain.blog.Authorhhw;
 import domain.blog.Post;
 import domain.blog.Section;
 import org.apache.ibatis.annotations.*;
@@ -37,6 +38,10 @@ public interface BoundAuthorMapper {
   //======================================================
 
   int insertAuthor(Author author);
+
+    int insertAuthorhhw(Authorhhw author);
+
+    Authorhhw selectAuthorhhw(Authorhhw author);
 
   int insertAuthorDynamic(Author author);
 

@@ -218,7 +218,7 @@ public class DefaultSqlSession implements SqlSession {
   public Configuration getConfiguration() {
     return configuration;
   }
-
+  //hhw:tag [select:getMapper:step_1] 根据类型获取dao的实例代理对象
   public <T> T getMapper(Class<T> type) {
     return configuration.<T>getMapper(type, this);
   }

@@ -51,6 +51,9 @@ public class SimpleExecutor extends BaseExecutor {
     }
   }
 
+    /**
+     * hhw:tag [select:step_7] 从数据库读取数据
+     */
   public <E> List<E> doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) throws SQLException {
     Statement stmt = null;
     try {
@@ -68,7 +71,7 @@ public class SimpleExecutor extends BaseExecutor {
   }
 
     /**
-     * hhw:tag [select:step_7] 准备一个statement对象
+     * hhw:tag [select:step_7B] 准备一个statement对象
      * @param handler
      * @param statementLog
      * @return

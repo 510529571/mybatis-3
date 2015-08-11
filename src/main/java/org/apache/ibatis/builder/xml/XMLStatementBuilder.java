@@ -54,7 +54,7 @@ public class XMLStatementBuilder extends BaseBuilder {
   }
 
     /**
-     * hhw:tag 创建MappedStatement并将它装载到configuration中
+     * hhw:tag [initContext:] 创建MappedStatement对象并将它装载到configuration中
      */
   public void parseStatementNode() {
     String id = context.getStringAttribute("id");

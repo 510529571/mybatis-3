@@ -98,6 +98,9 @@ public abstract class BaseExecutor implements Executor {
     return closed;
   }
 
+    /**
+     * hhw:tag [update:step_5] update处理逻辑
+     */
   public int update(MappedStatement ms, Object parameter) throws SQLException {
     ErrorContext.instance().resource(ms.getResource()).activity("executing an update").object(ms.getId());
     if (closed) throw new ExecutorException("Executor was closed.");
@@ -122,6 +125,7 @@ public abstract class BaseExecutor implements Executor {
 
     /**
      * hhw:tag [select:step_5] 从本地1级缓存读取数据，没有则从数据库读取数据
+     * hhw:task 1.queryStack这个参数有什么用 2.deferredLoads这个参数有什么用
      */
   public <E> List<E> query(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql) throws SQLException {
     ErrorContext.instance().resource(ms.getResource()).activity("executing a query").object(ms.getId());
@@ -282,7 +286,7 @@ public abstract class BaseExecutor implements Executor {
   }
 
     /**
-     * hhw:tag [select:step_7_1] 开启一个connection
+     * hhw:tag [select:step_7B_1] 开启一个connection
      */
   protected Connection getConnection(Log statementLog) throws SQLException {
     Connection connection = transaction.getConnection();

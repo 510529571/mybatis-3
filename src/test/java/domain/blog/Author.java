@@ -18,7 +18,7 @@ package domain.blog;
 import java.io.Serializable;
 
 public class Author implements Serializable {
-
+    private static final long serialVersionUID = 1325371271075612475L;
   protected int id;
   protected String username;
   protected String password;

@@ -310,7 +310,7 @@ public class XMLConfigBuilder extends BaseBuilder {
   }
 
     /**
-     * hhw:tag 装载mapper节点
+     * hhw:tag [initContext:]装载mapper节点
      */
   private void mapperElement(XNode parent) throws Exception {
     if (parent != null) {

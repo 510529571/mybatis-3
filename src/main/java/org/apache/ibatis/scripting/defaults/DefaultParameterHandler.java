@@ -55,7 +55,7 @@ public class DefaultParameterHandler implements ParameterHandler {
   public Object getParameterObject() {
     return parameterObject;
   }
-
+//hhw:tag [select:step_7B_3_3] 设置sql语句的入参值
   public void setParameters(PreparedStatement ps) throws SQLException {
     ErrorContext.instance().activity("setting parameters").object(mappedStatement.getParameterMap().getId());
     List<ParameterMapping> parameterMappings = boundSql.getParameterMappings();
